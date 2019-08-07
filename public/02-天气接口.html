@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        // dataType:'jsonp'
+        
+        $.ajax({
+            type:'get',
+            url:'https://wis.qq.com/weather/common',
+            data:{
+                source:'pc',
+                weather_type:'forecast_1h',
+                province:'湖北',
+                city:'武汉'
+            },
+            // 要使用jsonp 一定要设置dataType为jsonp
+            dataType:'jsonp',
+            success:function(res){
+                console.log(res);
+            }
+        });
+        
+        
+    </script>
+</body>
+</html>

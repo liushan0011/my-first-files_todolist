@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+    <form action="" id="form">
+        用户名: <input type="text" name="username" id="user">
+        年龄: <input type="text" name="age" id="age">
+        密码: <input type="password" name="pwd">
+        <input type="button" value="提交" id="btn">
+    </form>
+    <script>
+        //jQuery中的ajax 
+
+        $('#btn').on('click', function () {
+            // 如果年龄小于 18 并且大于 80 就不让发送ajax 
+            // if ($('#age').val() < 18 || $('#age').val() > 80) {
+            //     return false;
+            // }
+            // 我们如果发送是k=v&k=v这种格式的数据  不需要写contentType属性
+            // 我们如果发送是json这种格式的数据  不需要写contentType:application/json
+            // 并且在data:把对象转换为json格式的字符  JSON.stringify(要转换的对象)
+            // serialize叫表单序列化 获取表单中有name属性的控件标签
+            var formData = $('#form').serialize();
+            
+            $.ajax({
+                type: 'post',  // 请求方式
+                url: '/getData',  // 请求的路由地址
+                data: $('#form').serialize(),
+                // 在发送ajax之前 可以对表单数据进行验证
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

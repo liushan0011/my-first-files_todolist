@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+    <!-- 表单本身就具有提交数据到服务器的功能 -->
+    <form action="http://www.baidu.com" method="get">
+        用户名：<input type="text" name="user" id="username"><br>
+        密码：<input type="password" name="pwd" id="pass"><br>
+        <!-- 下面这个按钮 没有设置type属性 但是在form标签它就是submit按钮 -->
+        <!-- <button type="button">提交</button> -->
+        <input type="button">
+    </form>
+    <script>
+    //    我们是想通过ajax来将数据发送给服务器
+    // 第一步：找到button按钮注册 submit 
+    $('button').on('click',function(e){
+        $.post({
+            type:'post',
+            url:'/getPost',
+            data:$('form').serialize(),
+            success:function(res){
+                console.log(res);
+            }
+        });
+    });
+    
+    </script>
+</body>
+</html>
